@@ -4,19 +4,17 @@ public class Room {
     private boolean roomCleared;
     private int roomNumber;
     private String printMessage;
-    public Room() {
+    private Player player;
+    public Room(int roomNumber) {
         searchOrNot = false;
         dragonAmount = (int) (Math.random() * 4);
         roomCleared = false;
-        roomNumber = 1;
+        this.roomNumber = roomNumber;
         printMessage = "";
     }
 
-    public void changeRoomNumber() {
-        roomNumber++;
-    }
     public void dragonSlayed() {
-        dragonAmount --;
+        dragonAmount--;
         if (dragonAmount == 0) {
             roomCleared = true;
         }
@@ -25,15 +23,20 @@ public class Room {
         searchOrNot = false;
         dragonAmount = (int) (Math.random() * 4);
         roomCleared = false;
-        roomNumber++;
     }
 
     public void searchRoom() {
         if (!searchOrNot) {
             int value = (int) (Math.random() * 10) + 1;
             if (value <= 2) {
-
+                printMessage = "You found a potion!";
             }
+        } else {
+            printMessage = "You already have searched this room";
         }
+    }
+
+    public String getPrintMessage() {
+        return printMessage;
     }
 }

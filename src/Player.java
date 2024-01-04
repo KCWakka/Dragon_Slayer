@@ -44,4 +44,11 @@ public class Player {
             return false;
         }
     }
+
+    public String toString() {
+        String str = Colors.CYAN + "Player's name: " + playerName + Colors.RESET;
+        str += Colors.RED + "\nPlayer's Health: " + playerHealth + Colors.RESET;
+        str += Colors.YELLOW + "\nPlayer's gold: " + playerGold + Colors.RESET;
+        return str;
+    }
 }

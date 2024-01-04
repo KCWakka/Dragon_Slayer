@@ -31,4 +31,9 @@ public class Sword {
         }
         upgradeValue ++;
     }
+
+    public String toString() {
+        String str = Colors.PURPLE + "The amount of time sword have being upgraded: " + upgradeValue + Colors.RESET;
+        return str;
+    }
 }
