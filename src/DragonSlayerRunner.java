@@ -1,5 +1,6 @@
-public class Main {
+public class DragonSlayerRunner {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        DragonSlayer game = new DragonSlayer();
+        game.play();
     }
 }

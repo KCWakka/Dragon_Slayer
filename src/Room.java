@@ -1,2 +1,6 @@
-package PACKAGE_NAME;public class Room {
+public class Room {
+    private boolean searchOrNot;
+    public Room() {
+
+    }
 }
