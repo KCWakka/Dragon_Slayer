@@ -10,7 +10,8 @@ public class Dragon {
         return dragonLevel * (int) (Math.random() * 10) + 1;
     }
 
-    public boolean dragonIsDead() {
+    public boolean dragonIsDead(int damage) {
+        dragonHealth -= damage;
         if (dragonHealth < 0) {
             return true;
         } else {

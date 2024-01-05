@@ -49,6 +49,7 @@ public class Player {
         String str = Colors.CYAN + "Player's name: " + playerName + Colors.RESET;
         str += Colors.RED + "\nPlayer's Health: " + playerHealth + Colors.RESET;
         str += Colors.YELLOW + "\nPlayer's gold: " + playerGold + Colors.RESET;
+        str += Colors.GREEN + "\nHas Health Pot: " + hasHealthPot + Colors.RESET;
         return str;
     }
 }

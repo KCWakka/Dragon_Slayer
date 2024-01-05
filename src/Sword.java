@@ -34,6 +34,8 @@ public class Sword {
 
     public String toString() {
         String str = Colors.PURPLE + "The amount of time sword have being upgraded: " + upgradeValue + Colors.RESET;
+        str += Colors.RED +"\nAttack power: " + attackPower + Colors.RESET;
+        str += Colors.BLUE + "\n Dodge Chance: " + dodgeValue + Colors.WHITE + "%" + Colors.RESET;
         return str;
     }
 }

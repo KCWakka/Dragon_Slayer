@@ -3,7 +3,7 @@ public class DragonSlayer {
     private Player player;
     private Sword sword;
     private static final Scanner scan = new Scanner(System.in);
-    private Room room;
+    private Room currentRoom;
     private int roomNumber;
 
 
@@ -14,25 +14,21 @@ public class DragonSlayer {
     public void play() {
         startingGame();
         enterRoom();
-        showMenu();
     }
 
-    private void startingMenu() {
-
-    }
     private void startingGame() {
         System.out.println("Enter player's name");
-        player = new Player(scan.nextLine());
+        String name = scan.nextLine();
+        player = new Player(name);
         sword = new Sword();
+        roomNumber = 0;
     }
     private void enterRoom() {
-
+        roomNumber++;
+        currentRoom = new Room(roomNumber);
+        currentRoom.playerHasArrived(player);
     }
 
-    private void gameMenu() {
-        String choices = "";
-        while (choices)
-    }
 
     private void processChoices(String choices) {
 
