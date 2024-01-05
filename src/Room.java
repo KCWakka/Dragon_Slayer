@@ -5,7 +5,7 @@ public class Room {
     private int roomNumber;
     private String printMessage;
     private Player player;
-    private int damageTaken
+    private int damageTaken;
     public Room(int roomNumber) {
         searchOrNot = false;
         this.roomNumber = roomNumber;
@@ -61,7 +61,7 @@ public class Room {
         return printMessage;
     }
     public String toString() {
-        String str =
+        String str = "This Den is filled with many dragons! The total amount of dragon here is: " + Colors.PURPLE + dragonAmount + Colors.RESET;
         return str;
     }
 }
