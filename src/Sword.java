@@ -23,6 +23,7 @@ public class Sword {
         stat.toUpperCase();
         if (stat.equals("P")) {
             attackPower += 2;
+            System.out.println("Your sword's attackpower got increase by 2");
         } else if (stat.equals("D")) {
             dodgeValue += 4;
         } else if (stat.equals("B")) {

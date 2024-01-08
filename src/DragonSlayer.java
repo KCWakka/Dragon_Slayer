@@ -48,12 +48,40 @@ public class DragonSlayer {
             System.out.println("(U)se health pot.(Only if you have one)");
             System.out.println("(L)ook at your weapon's stat.");
             System.out.println("(B)uy an weapon upgrade!");
+            System.out.println("(G)ive up on this current run.");
             choice = scan.nextLine().toLowerCase();
+            processChoices(choice);
         }
     }
 
     private void processChoices(String choices) {
+        if (choices.equals("e")) {
 
+        } else if (choices.equals("s")) {
+            currentRoom.searchRoom();
+        } else if (choices.equals("f")) {
+
+        } else if (choices.equals("i")) {
+
+        } else if (choices.equals("u")) {
+
+        } else if (choices.equals("l")) {
+            System.out.println(sword);
+        } else if (choices.equals("b")) {
+            System.out.println("Do you want to upgrade your sword? Each upgrade cost more even if you didn't buy an upgrade.(Y/N): ");
+            String choice = scan.nextLine().toLowerCase();
+            if (choice.equals("y") && player.getPlayerGold() >= sword.getUpgradeValue() * 10) {
+                System.out.println("Select the upgrade you want:\n(P)ower(add attackpower)\n(D)odge(increase your chances of dodging attack)\n(B)oth(you add a bit of attackPower and dodge");
+                choice = scan.nextLine().toLowerCase();
+                while (!(choice.equals("p") || choice.equals("d") || choice.equals("b"))) {
+                    System.out.println("Please select an valid option");
+                    choice = scan.nextLine().toLowerCase();
+                }
+                sword.upgradeStat(choice);
+            } else {
+                System.out.println("Sorry, you either don't have enough gold or select an invalid option.");
+            }
+        }
     }
 
 }

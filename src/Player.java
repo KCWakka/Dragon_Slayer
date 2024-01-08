@@ -18,8 +18,8 @@ public class Player {
         return playerName;
     }
 
-    public int getPlayerHealth() {
-        return playerHealth;
+    public int getPlayerMissingHealth() {
+        return 100 - playerHealth;
     }
 
     public int getPlayerGold() {
