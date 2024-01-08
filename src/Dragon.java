@@ -18,4 +18,10 @@ public class Dragon {
             return false;
         }
     }
+    public String toString() {
+        String str = "";
+        str += "Dragon's healths: " + Colors.RED + dragonHealth + Colors.RESET;
+        str += "\n Dragon's levels: " + Colors.PURPLE + dragonLevel + Colors.RESET;
+        return str;
+    }
 }

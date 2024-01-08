@@ -60,11 +60,15 @@ public class DragonSlayer {
         } else if (choices.equals("s")) {
             currentRoom.searchRoom();
         } else if (choices.equals("f")) {
-
+            currentRoom
         } else if (choices.equals("i")) {
-
+            currentRoom
         } else if (choices.equals("u")) {
-
+            if (player.isHasHealthPot()) {
+                 System.out.println("You use a health pot and regain");
+            } else {
+                System.out.println("You don't have a health pot to use.");
+            }
         } else if (choices.equals("l")) {
             System.out.println(sword);
         } else if (choices.equals("b")) {
