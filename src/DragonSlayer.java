@@ -31,7 +31,7 @@ public class DragonSlayer {
     private void enterRoom() {
         roomNumber++;
         currentRoom = new Room(roomNumber);
-        currentRoom.playerHasArrived(player);
+        currentRoom.playerHasArrived(player, sword);
     }
     private void gameMenu() {
         String choice = "";
@@ -60,15 +60,16 @@ public class DragonSlayer {
         } else if (choices.equals("s")) {
             currentRoom.searchRoom();
         } else if (choices.equals("f")) {
-            currentRoom
-        } else if (choices.equals("i")) {
-            currentRoom
-        } else if (choices.equals("u")) {
-            if (player.isHasHealthPot()) {
-                 System.out.println("You use a health pot and regain");
-            } else {
-                System.out.println("You don't have a health pot to use.");
+            if (currentRoom.fightDragon()) {
+                System.out.println(currentRoom.getPrintMessage());
+                System.out.print("Select your choice: ");
+                int choice = scan.nextInt();
+                scan.nextLine();
             }
+        } else if (choices.equals("i")) {
+            currentRoom.inspectDragon();
+        } else if (choices.equals("u")) {
+            currentRoom.useHealthPot();
         } else if (choices.equals("l")) {
             System.out.println(sword);
         } else if (choices.equals("b")) {
