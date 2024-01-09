@@ -11,7 +11,7 @@ public class Room {
     public Room(int roomNumber) {
         searchOrNot = false;
         this.roomNumber = roomNumber;
-        dragonAmount = (int) (Math.random() * (2 + roomNumber));
+        dragonAmount = (int) (Math.random() * (1 + roomNumber)) + 1;
         roomCleared = false;
         printMessage = "";
         player = null;
@@ -63,9 +63,9 @@ public class Room {
 
     public void useHealthPot() {
         if (player.isHasHealthPot()) {
-            printMessage = "You use a health pot and regain";
+            printMessage = "You use a health pot and regain ";
             int healthGain = player.getPlayerMissingHealth() / 2;
-            printMessage += Colors.RED + healthGain + Colors.RESET;
+            printMessage += Colors.RED + healthGain + "healths" + Colors.RESET;
             player.changePlayerHealth(healthGain);
             player.setHasHealthPot(false);
         } else {
@@ -77,41 +77,47 @@ public class Room {
         printMessage = dragon.toString();
     }
     public void fightDragon() {
-        printMessage = Colors.CYAN + player.getPlayerName() + Colors.RESET + " attacked for ";
-        damageTaken = sword.getAttackPower() * (int) (Math.random() * 10) + 1;
-        printMessage += Colors.RED + damageTaken + Colors.RESET;
-        if (!dragon.dragonIsDead(damageTaken)) {
-            if ((int) (Math.random() * 100) + 1 >= sword.getDodgeValue()) {
-                printMessage += "\nThe dragon land its attacked and dealt ";
-                damageTaken = dragon.dragonAttack();
-                printMessage += Colors.RED + damageTaken + Colors.RESET;
-                player.changePlayerHealth(-damageTaken);
+        if (!roomCleared) {
+            printMessage = Colors.CYAN + player.getPlayerName() + Colors.RESET + " attacked for ";
+            damageTaken = sword.getAttackPower() * ((int) (Math.random() * 5) + 1);
+            printMessage += Colors.RED + damageTaken + Colors.RESET;
+            if (!dragon.dragonIsDead(damageTaken)) {
+                if ((int) (Math.random() * 100) + 1 >= sword.getDodgeValue()) {
+                    printMessage += "\nThe dragon land its attacked and dealt ";
+                    damageTaken = dragon.dragonAttack();
+                    printMessage += Colors.RED + damageTaken + Colors.RESET;
+                    player.changePlayerHealth(-damageTaken);
+                } else {
+                    printMessage += "\nThe dragon try to attacked but missed.";
+                }
             } else {
-                printMessage += "\nThe dragon try to attacked but missed.";
+                printMessage += Colors.GREEN + "\nYou have killed the dragon before it attacked you. It had drop some loots." + Colors.RESET;
+                dragonSlayed();
+                int chances = (int) (Math.random() * 4) + 1;
+                if (chances < 2) {
+                    printMessage += Colors.YELLOW + "\nIt drop ";
+                    int gold = (int) (Math.random() * 50) + 1;
+                    printMessage += gold + " golds." + Colors.RESET;
+                    player.addPlayerGold(gold);
+                } else if (chances < 3) {
+                    printMessage += Colors.PURPLE + "Your sword got upgraded!" + Colors.RESET;
+                    chances = (int) (Math.random() * 3) + 1;
+                    if (chances == 1) {
+                        sword.upgradeStat("P");
+                    } else if (chances == 2) {
+                        sword.upgradeStat("D");
+                    } else {
+                        sword.upgradeStat("B");
+                    }
+                } else if (chances < 4) {
+                    printMessage += Colors.RED + "You regain some of your health." + Colors.RESET;
+                    player.changePlayerHealth(player.getPlayerMissingHealth() / 4);
+                } else {
+                    printMessage += "You got nothing.";
+                }
             }
         } else {
-            printMessage += Colors.GREEN +"\nYou have killed the dragon before it attacked you. It had drop some loots." + Colors.RESET;
-            int chances = (int) (Math.random() * 4) + 1;
-            if (chances < 2) {
-                printMessage += Colors.YELLOW + "\nIt drop ";
-                int gold = (int) (Math.random() * 50) + 1;
-                printMessage += gold + " golds." + Colors.RESET;
-            } else if (chances < 3) {
-                printMessage += Colors.PURPLE + "Your sword got upgraded!" + Colors.RESET;
-                chances = (int) (Math.random() * 3) + 1;
-                if (chances == 1) {
-                    sword.upgradeStat("P");
-                } else if (chances == 2) {
-                    sword.upgradeStat("D");
-                } else {
-                    sword.upgradeStat("B");
-                }
-            } else if (chances < 4) {
-                printMessage += Colors.RED + "You regain some of your health." + Colors.RESET;
-                player.changePlayerHealth(player.getPlayerMissingHealth()/4);
-            } else {
-                printMessage += "You got nothing.";
-            }
+            printMessage = Colors.CYAN + "You killed all the dragon in the room, there is no more to killed!" + Colors.RESET;
         }
     }
     public String getPrintMessage() {
@@ -120,5 +126,9 @@ public class Room {
     public String toString() {
         String str = "This Den is filled with many dragons! The total amount of dragon here is: " + Colors.PURPLE + dragonAmount + Colors.RESET;
         return str;
+    }
+
+    public void inspectSword() {
+        printMessage = sword.toString();
     }
 }

@@ -26,9 +26,12 @@ public class Sword {
             System.out.println("Your sword's attackpower got increase by 2");
         } else if (stat.equals("D")) {
             dodgeValue += 4;
+            System.out.println("Your sword's dodgeValue got increase by 4");
         } else if (stat.equals("B")) {
             attackPower += 1;
             dodgeValue += 2;
+            System.out.println("Your sword's attackpower got increase by 1");
+            System.out.println("Your sword's dodgeValue got increase by 2");
         }
         upgradeValue ++;
     }
@@ -36,7 +39,7 @@ public class Sword {
     public String toString() {
         String str = Colors.PURPLE + "The amount of time sword have being upgraded: " + upgradeValue + Colors.RESET;
         str += Colors.RED +"\nAttack power: " + attackPower + Colors.RESET;
-        str += Colors.BLUE + "\n Dodge Chance: " + dodgeValue + Colors.WHITE + "%" + Colors.RESET;
+        str += Colors.BLUE + "\nDodge Chance: " + dodgeValue + "%" + Colors.RESET;
         return str;
     }
 }

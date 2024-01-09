@@ -21,7 +21,7 @@ public class DragonSlayer {
 
     private void startingGame() {
         System.out.println( Colors.CYAN +"Welcome to the Dragon Slayer game where the goal is to defeat the dungeon by defeat the dragon in each room the dugneon has." + Colors.RESET);
-        System.out.println("Some dragon are tougher are other so you can achieve your goals by scavenging for resources and upgrading your sword!");
+        System.out.println("Some dragon are tougher other so you can achieve your goals by scavenging for resources and upgrading your sword!");
         System.out.print("Enter player's name: ");
         String name = scan.nextLine();
         player = new Player(name);
@@ -49,6 +49,8 @@ public class DragonSlayer {
             System.out.println("(L)ook at your weapon's stat.");
             System.out.println("(B)uy an weapon upgrade!");
             System.out.println("(G)ive up on this current run.");
+            System.out.println();
+            System.out.print("What's your next move? ");
             choice = scan.nextLine().toLowerCase();
             processChoices(choice);
         }
@@ -66,21 +68,30 @@ public class DragonSlayer {
         } else if (choices.equals("u")) {
             currentRoom.useHealthPot();
         } else if (choices.equals("l")) {
-            System.out.println(sword);
+            currentRoom.inspectSword();
         } else if (choices.equals("b")) {
-            System.out.println("Do you want to upgrade your sword? Each upgrade cost more even if you didn't buy an upgrade.(Y/N): ");
+            System.out.println("Do you want to upgrade your sword? The first upgrade of your sword is free! Each upgrade cost more even if you didn't buy an upgrade.(Y/N): ");
             String choice = scan.nextLine().toLowerCase();
+            while (!choice.equals("y") && !choice.equals("n")) {
+                System.out.print("That is a invalid option, please choose again:");
+                choice = scan.nextLine().toLowerCase();
+            }
             if (choice.equals("y") && player.getPlayerGold() >= sword.getUpgradeValue() * 10) {
-                System.out.println("Select the upgrade you want:\n(P)ower(add attackpower)\n(D)odge(increase your chances of dodging attack)\n(B)oth(you add a bit of attackPower and dodge");
+                System.out.println("Select the upgrade you want:\n(P)ower(add attackpower)\n(D)odge(increase your chances of dodging attack)\n(B)oth(you add a bit of attackPower and dodge)");
                 choice = scan.nextLine().toLowerCase();
                 while (!(choice.equals("p") || choice.equals("d") || choice.equals("b"))) {
                     System.out.println("Please select an valid option");
                     choice = scan.nextLine().toLowerCase();
                 }
                 sword.upgradeStat(choice);
+                System.out.println("Next upgrade cost is " + Colors.YELLOW + sword.getUpgradeValue() * 10 + " golds" + Colors.RESET);
             } else {
-                System.out.println("Sorry, you either don't have enough gold or select an invalid option.");
+                System.out.println("Sorry, you either don't have enough gold or decide not to buy an upgrade.");
             }
+        } else if (choices.equals("g")) {
+            System.out.println("Goodbye " + Colors.CYAN + player.getPlayerName() + Colors.RESET + ". Hope you have a nice time playing this game. Have a nice day and hope that you play again!");
+        } else {
+            System.out.println("Yikes that is not an option on the list, please select again!");
         }
     }
 

@@ -12,7 +12,7 @@ public class Dragon {
 
     public boolean dragonIsDead(int damage) {
         dragonHealth -= damage;
-        if (dragonHealth < 0) {
+        if (dragonHealth <= 0) {
             return true;
         } else {
             return false;
@@ -21,7 +21,7 @@ public class Dragon {
     public String toString() {
         String str = "";
         str += "Dragon's healths: " + Colors.RED + dragonHealth + Colors.RESET;
-        str += "\n Dragon's levels: " + Colors.PURPLE + dragonLevel + Colors.RESET;
+        str += "\nDragon's levels: " + Colors.PURPLE + dragonLevel + Colors.RESET;
         return str;
     }
 }

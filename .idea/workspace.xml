@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8948eecb-9a1f-435d-b492-781a844d812e" name="Changes" comment="added loots.">
+    <list default="true" id="8948eecb-9a1f-435d-b492-781a844d812e" name="Changes" comment="added loots pools.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dragon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dragon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DragonSlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DragonSlayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Room.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Sword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sword.java" afterDir="false" />
@@ -82,8 +83,26 @@
       <option name="project" value="LOCAL" />
       <updated>1704823934066</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="added loots pools.">
+      <created>1704824689183</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1704824689183</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="some starting code(Player and sword should be done)." />
@@ -92,6 +111,7 @@
     <MESSAGE value="starting part of game added." />
     <MESSAGE value="added fighting dragon portion." />
     <MESSAGE value="added loots." />
-    <option name="LAST_COMMIT_MESSAGE" value="added loots." />
+    <MESSAGE value="added loots pools." />
+    <option name="LAST_COMMIT_MESSAGE" value="added loots pools." />
   </component>
 </project>
