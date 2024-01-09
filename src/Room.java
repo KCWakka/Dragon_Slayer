@@ -76,24 +76,43 @@ public class Room {
     public void inspectDragon() {
         printMessage = dragon.toString();
     }
-    public boolean fightDragon() {
+    public void fightDragon() {
         printMessage = Colors.CYAN + player.getPlayerName() + Colors.RESET + " attacked for ";
         damageTaken = sword.getAttackPower() * (int) (Math.random() * 10) + 1;
         printMessage += Colors.RED + damageTaken + Colors.RESET;
-        if (dragon.dragonIsDead(damageTaken)) {
+        if (!dragon.dragonIsDead(damageTaken)) {
             if ((int) (Math.random() * 100) + 1 >= sword.getDodgeValue()) {
                 printMessage += "\nThe dragon land its attacked and dealt ";
                 damageTaken = dragon.dragonAttack();
                 printMessage += Colors.RED + damageTaken + Colors.RESET;
                 player.changePlayerHealth(-damageTaken);
             } else {
-                printMessage += "\nThe dragon try to attacked but missed";
+                printMessage += "\nThe dragon try to attacked but missed.";
             }
         } else {
             printMessage += Colors.GREEN +"\nYou have killed the dragon before it attacked you. It had drop some loots." + Colors.RESET;
-            return true;
+            int chances = (int) (Math.random() * 4) + 1;
+            if (chances < 2) {
+                printMessage += Colors.YELLOW + "\nIt drop ";
+                int gold = (int) (Math.random() * 50) + 1;
+                printMessage += gold + " golds." + Colors.RESET;
+            } else if (chances < 3) {
+                printMessage += Colors.PURPLE + "Your sword got upgraded!" + Colors.RESET;
+                chances = (int) (Math.random() * 3) + 1;
+                if (chances == 1) {
+                    sword.upgradeStat("P");
+                } else if (chances == 2) {
+                    sword.upgradeStat("D");
+                } else {
+                    sword.upgradeStat("B");
+                }
+            } else if (chances < 4) {
+                printMessage += Colors.RED + "You regain some of your health." + Colors.RESET;
+                player.changePlayerHealth(player.getPlayerMissingHealth()/4);
+            } else {
+                printMessage += "You got nothing.";
+            }
         }
-        return false;
     }
     public String getPrintMessage() {
         return printMessage;

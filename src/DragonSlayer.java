@@ -60,12 +60,7 @@ public class DragonSlayer {
         } else if (choices.equals("s")) {
             currentRoom.searchRoom();
         } else if (choices.equals("f")) {
-            if (currentRoom.fightDragon()) {
-                System.out.println(currentRoom.getPrintMessage());
-                System.out.print("Select your choice: ");
-                int choice = scan.nextInt();
-                scan.nextLine();
-            }
+            currentRoom.fightDragon();
         } else if (choices.equals("i")) {
             currentRoom.inspectDragon();
         } else if (choices.equals("u")) {

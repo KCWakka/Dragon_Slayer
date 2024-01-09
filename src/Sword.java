@@ -20,7 +20,7 @@ public class Sword {
     }
 
     public void upgradeStat (String stat) {
-        stat.toUpperCase();
+        stat = stat.toUpperCase();
         if (stat.equals("P")) {
             attackPower += 2;
             System.out.println("Your sword's attackpower got increase by 2");
