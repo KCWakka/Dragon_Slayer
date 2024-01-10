@@ -110,8 +110,8 @@ public class DragonSlayer {
         endingPhaseMenu();
     }
     private void endingPhaseMenu() {
-        String choice = "";
-        while (!choice.equals("l")) {
+        String choice = "v";
+        while (choice.equals("v") || choice.equals("p")) {
             System.out.println("(V)iew your top 3's score");
             System.out.println("(S)ee the point breakdown");
             System.out.println("(P)lay again");
