@@ -17,6 +17,7 @@ public class DragonSlayer {
         startingGame();
         enterRoom();
         gameMenu();
+        endingPhase();
     }
 
     private void startingGame() {
@@ -36,23 +37,27 @@ public class DragonSlayer {
     private void gameMenu() {
         String choice = "";
         while (!choice.equals("g")) {
-            System.out.println();
-            System.out.println(currentRoom.getPrintMessage());
-            System.out.println("***");
-            System.out.println(player);
-            System.out.println(currentRoom);
-            System.out.println("(E)nter the next room.");
-            System.out.println("(S)earch the room.");
-            System.out.println("(F)ight the dragon.");
-            System.out.println("(I)nspect the dragon.");
-            System.out.println("(U)se health pot.(Only if you have one)");
-            System.out.println("(L)ook at your weapon's stat.");
-            System.out.println("(B)uy an weapon upgrade!");
-            System.out.println("(G)ive up on this current run.");
-            System.out.println();
-            System.out.print("What's your next move? ");
-            choice = scan.nextLine().toLowerCase();
-            processChoices(choice);
+            if (player.isDead() || roomNumber == 6) {
+                choice = "g";
+            } else {
+                System.out.println();
+                System.out.println(currentRoom.getPrintMessage());
+                System.out.println("***");
+                System.out.println(player);
+                System.out.println(currentRoom);
+                System.out.println("(E)nter the next room.");
+                System.out.println("(S)earch the room.");
+                System.out.println("(F)ight the dragon.");
+                System.out.println("(I)nspect the dragon.");
+                System.out.println("(U)se health pot.(Only if you have one)");
+                System.out.println("(L)ook at your weapon's stat.");
+                System.out.println("(B)uy an weapon upgrade!");
+                System.out.println("(G)ive up on this current run.");
+                System.out.println();
+                System.out.print("What's your next move? ");
+                choice = scan.nextLine().toLowerCase();
+                processChoices(choice);
+            }
         }
     }
 
@@ -96,5 +101,36 @@ public class DragonSlayer {
             System.out.println("Yikes that is not an option on the list, please select again!");
         }
     }
+    private void endingPhase() {
+        if (player.isDead()) {
+            System.out.println(Colors.CYAN + "Game over, player is dead");
+        } else {
+            System.out.println(Colors.CYAN + "Game over, you beat the dungeon!");
+        }
+        endingPhaseMenu();
+    }
+    private void endingPhaseMenu() {
+        String choice = "";
+        while (!choice.equals("l")) {
+            System.out.println("(V)iew your top 3's score");
+            System.out.println("(S)ee the point breakdown");
+            System.out.println("(P)lay again");
+            System.out.println("(L)eave the game");
+            System.out.print(Colors.RED + "What is your choices: " + Colors.RESET);
+            choice = scan.nextLine().toLowerCase();
+            endingPhaseProcessChoices(choice);
+        }
+    }
 
+    private void endingPhaseProcessChoices(String choice) {
+        if (choice.equals("v")) {
+
+        } else if (choice.equals("s")) {
+
+        } else if (choice.equals("p")) {
+            play();
+        } else {
+            System.out.println("Goodbye " + Colors.CYAN + player.getPlayerName() + Colors.RESET + ". Hope you have a nice time playing this game. Have a nice day and hope that you play again!");
+        }
+    }
 }
