@@ -58,7 +58,9 @@ public class DragonSlayer {
 
     private void processChoices(String choices) {
         if (choices.equals("e")) {
-
+            if (currentRoom.leaveRoom()) {
+                System.out.println(currentRoom.getPrintMessage());
+            }
         } else if (choices.equals("s")) {
             currentRoom.searchRoom();
         } else if (choices.equals("f")) {

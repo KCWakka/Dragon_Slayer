@@ -38,7 +38,7 @@ public class Player {
         playerHealth += health;
     }
     public boolean isDead() {
-        if (playerHealth < 0) {
+        if (playerHealth <= 0) {
             return true;
         } else {
             return false;

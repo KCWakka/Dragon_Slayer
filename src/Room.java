@@ -8,6 +8,8 @@ public class Room {
     private Sword sword;
     private int damageTaken;
     private Dragon dragon;
+    private String roomName;
+    private boolean victory;
     public Room(int roomNumber) {
         searchOrNot = false;
         this.roomNumber = roomNumber;
@@ -18,6 +20,18 @@ public class Room {
         sword = null;
         damageTaken = 0;
         dragon = new Dragon();
+        victory = false;
+        if (roomNumber < 2) {
+            roomName = "Wyverns' den";
+        } else if (roomNumber < 3) {
+            roomName = "Ladons' den";
+        } else if (roomNumber < 4) {
+            roomName = "Leviathans' den";
+        } else if (roomNumber < 5) {
+            roomName = "Hydra's den";
+        } else {
+            roomName = "Typhons' den";
+        }
     }
 
     public void dragonSlayed() {
@@ -56,7 +70,7 @@ public class Room {
     public void playerHasArrived(Player player, Sword sword) {
         this.player = player;
         this.sword = sword;
-        printMessage = "Welcome to Den-" + roomNumber + ", " + player.getPlayerName() + ".";
+        printMessage = "Welcome to " + roomName + ", " + player.getPlayerName() + ".";
         printMessage += "\nMenacing aura is surrounding you, as you enter the room!";
 
     }
@@ -121,14 +135,22 @@ public class Room {
         }
     }
     public String getPrintMessage() {
-        return printMessage;
+        return Colors.WHITE + printMessage + Colors.RESET;
     }
     public String toString() {
-        String str = "This Den is filled with many dragons! The total amount of dragon here is: " + Colors.PURPLE + dragonAmount + Colors.RESET;
+        String str = "This dungeon is filled with many dragons! The total amount of dragon here is: " + Colors.PURPLE + dragonAmount + Colors.RESET;
         return str;
     }
 
     public void inspectSword() {
         printMessage = sword.toString();
+    }
+
+    public boolean leaveRoom() {
+        if (roomCleared) {
+            return true;
+        }
+        printMessage = "Sorry you can't leave the den yet, there are still dragon guarding it.";
+        return false;
     }
 }
