@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8948eecb-9a1f-435d-b492-781a844d812e" name="Changes" comment="added loots pools.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DragonSlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DragonSlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
+    <list default="true" id="8948eecb-9a1f-435d-b492-781a844d812e" name="Changes" comment="added room name.">
       <change beforePath="$PROJECT_DIR$/src/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Room.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -89,7 +86,14 @@
       <option name="project" value="LOCAL" />
       <updated>1704824689183</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="added room name.">
+      <created>1704912385166</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1704912385166</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -111,6 +115,7 @@
     <MESSAGE value="added fighting dragon portion." />
     <MESSAGE value="added loots." />
     <MESSAGE value="added loots pools." />
-    <option name="LAST_COMMIT_MESSAGE" value="added loots pools." />
+    <MESSAGE value="added room name." />
+    <option name="LAST_COMMIT_MESSAGE" value="added room name." />
   </component>
 </project>

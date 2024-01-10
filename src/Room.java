@@ -28,7 +28,7 @@ public class Room {
         } else if (roomNumber < 4) {
             roomName = "Leviathans' den";
         } else if (roomNumber < 5) {
-            roomName = "Hydra's den";
+            roomName = "Hydras' den";
         } else {
             roomName = "Typhons' den";
         }
@@ -138,7 +138,8 @@ public class Room {
         return Colors.WHITE + printMessage + Colors.RESET;
     }
     public String toString() {
-        String str = "This dungeon is filled with many dragons! The total amount of dragon here is: " + Colors.PURPLE + dragonAmount + Colors.RESET;
+        String str = "This dungeon have 5 room and is filled with many dragons! You are in " + Colors.CYAN + roomName + Colors.RESET;
+        str += " The total amount of dragon here is: " + Colors.PURPLE + dragonAmount + Colors.RESET;
         return str;
     }
 
@@ -148,6 +149,7 @@ public class Room {
 
     public boolean leaveRoom() {
         if (roomCleared) {
+            printMessage = "You entered to the next room of the dungeon";
             return true;
         }
         printMessage = "Sorry you can't leave the den yet, there are still dragon guarding it.";
