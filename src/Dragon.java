@@ -1,9 +1,12 @@
 public class Dragon {
     private int dragonLevel;
     private int dragonHealth;
-    public Dragon() {
+    public Dragon(int limitbreak) {
         dragonHealth = 100;
-        dragonLevel = (int) (Math.random() * 3) + 1;
+        dragonLevel = (int) (Math.random() * (3 + limitbreak)) + 1;
+    }
+    public int getDragonLevel() {
+        return dragonLevel;
     }
 
     public int dragonAttack() {

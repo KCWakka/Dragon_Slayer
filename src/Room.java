@@ -9,8 +9,10 @@ public class Room {
     private int damageTaken;
     private Dragon dragon;
     private String roomName;
-    private boolean victory;
-    public Room(int roomNumber) {
+    private int victory;
+    private int score;
+    private static int dragonScore = 0;
+    public Room(int roomNumber, int victory, boolean newGame) {
         searchOrNot = false;
         this.roomNumber = roomNumber;
         dragonAmount = (int) (Math.random() * (1 + roomNumber)) + 1;
@@ -19,8 +21,11 @@ public class Room {
         player = null;
         sword = null;
         damageTaken = 0;
-        dragon = new Dragon();
-        victory = false;
+        dragon = new Dragon(victory);
+        this.victory = victory;
+        if (newGame) {
+            dragonScore = 0;
+        }
         if (roomNumber < 2) {
             roomName = "Wyverns' den";
         } else if (roomNumber < 3) {
@@ -39,7 +44,8 @@ public class Room {
         if (dragonAmount == 0) {
             roomCleared = true;
         } else {
-            dragon = new Dragon();
+            dragonScore += dragon.getDragonLevel();
+            dragon = new Dragon(victory);
         }
     }
 
@@ -71,8 +77,11 @@ public class Room {
         this.player = player;
         this.sword = sword;
         printMessage = "Welcome to " + roomName + ", " + player.getPlayerName() + ".";
-        printMessage += "\nMenacing aura is surrounding you, as you enter the room!";
-
+        if (victory < 1) {
+            printMessage += "\nMenacing aura is surrounding you, as you enter the room!";
+        } else {
+            printMessage += "\n" + Colors.RED + "The dungeon seem to reject your existence. It seem alive as it send you malice aura.";
+        }
     }
 
     public void useHealthPot() {
@@ -154,5 +163,41 @@ public class Room {
         }
         printMessage = "Sorry you can't leave the den yet, there are still dragon guarding it.";
         return false;
+    }
+
+    public int calucateScore(String breakdown) {
+        if (breakdown.equals("y")) {
+            System.out.println(Colors.GREEN + "You get " + Colors.PURPLE + dragonScore * 3 + Colors.GREEN +" points for the diffcult of each dragon slayed and amount of dragon.");
+            System.out.println("You get " + Colors.PURPLE + sword.getUpgradeValue() + Colors.GREEN + " points for upgrading your sword");
+            System.out.print("You get ");
+            if (sword.getAttackPower() >= 30 || sword.getDodgeValue() >= 60) {
+                System.out.print(Colors.PURPLE + (sword.getAttackPower() + sword.getDodgeValue()) * 4);
+            } else {
+                System.out.print(Colors.PURPLE + 0);
+            }
+            System.out.println(Colors.GREEN + " points for breaking a certain stat limit on the sword");
+            System.out.println("You get " + Colors.PURPLE + player.getPlayerGold() * 2 + Colors.GREEN + " points for the amount of gold you have.");
+            System.out.println("You get " + (100 - player.getPlayerMissingHealth()) * 5 + Colors.GREEN + " points for the amount of health you have at the end of the game!");
+            if (player.isHasHealthPot()) {
+                System.out.println("You get " + Colors.PURPLE + 50 + Colors.GREEN + " points for having a health pot at the end of the game!");
+            }
+            System.out.println("You get " + Colors.PURPLE + victory * 150 + Colors.GREEN + " points for each victory you have!" + Colors.RESET);
+        } else {
+            score += dragonScore * 3;
+            score += sword.getUpgradeValue();
+            if (sword.getAttackPower() >= 30 || sword.getDodgeValue() >= 60) {
+                score += (sword.getAttackPower() + sword.getDodgeValue()) * 4;
+            }
+            score += player.getPlayerGold() * 2;
+            score += (100 - player.getPlayerMissingHealth()) * 5;
+            score += victory * 150;
+            if (player.isHasHealthPot()) {
+                score += 50;
+            }
+        }
+        return score;
+    }
+    public void setVictory(int victory) {
+        this.victory = victory;
     }
 }
