@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8948eecb-9a1f-435d-b492-781a844d812e" name="Changes" comment="added room name.">
-      <change afterPath="$PROJECT_DIR$/src/ConsoleUtility.java" afterDir="false" />
+    <list default="true" id="8948eecb-9a1f-435d-b492-781a844d812e" name="Changes" comment="added some Quality of life stuffs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DragonSlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DragonSlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Colors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Colors.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ConsoleUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ConsoleUtility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dragon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dragon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Room.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Sword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sword.java" afterDir="false" />
     </list>
@@ -97,7 +99,14 @@
       <option name="project" value="LOCAL" />
       <updated>1704912385166</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="added some Quality of life stuffs">
+      <created>1705084453168</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1705084453168</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -120,6 +129,7 @@
     <MESSAGE value="added loots." />
     <MESSAGE value="added loots pools." />
     <MESSAGE value="added room name." />
-    <option name="LAST_COMMIT_MESSAGE" value="added room name." />
+    <MESSAGE value="added some Quality of life stuffs" />
+    <option name="LAST_COMMIT_MESSAGE" value="added some Quality of life stuffs" />
   </component>
 </project>

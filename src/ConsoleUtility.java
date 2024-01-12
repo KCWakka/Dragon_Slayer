@@ -9,12 +9,19 @@ public class ConsoleUtility {
     public static final String CYAN = "\033[0;36m";    // CYAN
     public static final String WHITE = "\033[0;37m";   // WHITE
 
+    /** Use to clear the terminal screen
+     *
+     */
     // CLEARSCREEN ONLY WORKS IN TERMINAL, NOT IN INTELLIJ'S RUN CONSOLE
     public static void clearScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
 
+    /** To act some intermission between some code
+     *
+     * @param millisecond the amounts of delay wanted
+     */
     public static void delay(int millisecond) {
         try {
             Thread.sleep(millisecond);  // 2000 milliseconds, or 2 seconds

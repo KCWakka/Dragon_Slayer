@@ -1,6 +1,9 @@
 public class Colors {
     private Colors() {}
 
+    /** Use to change the color of the String
+     *
+     */
     public static final String RESET = "\033[0m";      // Reset
 
     public static final String BLACK = "\033[0;30m";   // BLACK

@@ -38,7 +38,9 @@ public class Room {
             roomName = Colors.BLACK + "Typhons' den" + Colors.RESET;
         }
     }
-
+    public String getPrintMessage() {
+        return Colors.WHITE + printMessage + Colors.RESET;
+    }
     public void dragonSlayed() {
         dragonAmount--;
         if (dragonAmount == 0) {
@@ -148,9 +150,6 @@ public class Room {
         } else {
             printMessage = Colors.CYAN + "You killed all the dragon in the room, there is no more to killed!" + Colors.RESET;
         }
-    }
-    public String getPrintMessage() {
-        return Colors.WHITE + printMessage + Colors.RESET;
     }
     public String toString() {
         String str = "This dungeon have 5 room and is filled with many dragons! You are in " + Colors.CYAN + roomName + Colors.RESET;
