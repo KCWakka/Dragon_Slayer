@@ -3,7 +3,7 @@ public class Sword {
     private int dodgeValue;
     private int upgradeValue;
     public Sword() {
-        attackPower = 10;
+        attackPower = 100;
         dodgeValue = 20;
         upgradeValue = 0;
     }
@@ -23,15 +23,15 @@ public class Sword {
         stat = stat.toUpperCase();
         if (stat.equals("P")) {
             attackPower += 2;
-            System.out.println("Your sword's attackpower got increase by 2");
+            System.out.println(Colors.CYAN + "Your sword's attackpower got increase by 2" + Colors.RESET);
         } else if (stat.equals("D")) {
             dodgeValue += 4;
-            System.out.println("Your sword's dodgeValue got increase by 4");
+            System.out.println(Colors.CYAN + "Your sword's dodgeValue got increase by 4" + Colors.RESET);
         } else if (stat.equals("B")) {
             attackPower += 1;
             dodgeValue += 2;
-            System.out.println("Your sword's attackpower got increase by 1");
-            System.out.println("Your sword's dodgeValue got increase by 2");
+            System.out.println(Colors.CYAN + "Your sword's attackpower got increase by 1" + Colors.RESET);
+            System.out.println(Colors.CYAN + "Your sword's dodgeValue got increase by 2" + Colors.RESET);
         }
         upgradeValue ++;
     }

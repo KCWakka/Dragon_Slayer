@@ -31,6 +31,7 @@ public class DragonSlayer {
         player = new Player(name);
         sword = new Sword();
         roomNumber = 0;
+        ConsoleUtility.delay(1000);
     }
     private void enterRoom() {
         boolean newGame = false;
@@ -40,14 +41,18 @@ public class DragonSlayer {
             newGame = true;
         }
         currentRoom = new Room(roomNumber, victory, newGame);
+        ConsoleUtility.delay(1000);
         currentRoom.playerHasArrived(player, sword);
     }
     private void gameMenu() {
         String choice = "";
         while (!choice.equals("g")) {
             if (player.isDead() || roomNumber == 6) {
+                ConsoleUtility.delay(2000);
+                ConsoleUtility.clearScreen();
                 choice = "g";
             } else {
+                ConsoleUtility.clearScreen();
                 System.out.println();
                 System.out.println(currentRoom.getPrintMessage());
                 System.out.println("***");
@@ -64,6 +69,7 @@ public class DragonSlayer {
                 System.out.println();
                 System.out.print("What's your next move? ");
                 choice = scan.nextLine().toLowerCase();
+                ConsoleUtility.delay(500);
                 processChoices(choice);
             }
         }
@@ -71,23 +77,30 @@ public class DragonSlayer {
 
     private void processChoices(String choices) {
         if (choices.equals("e")) {
+            ConsoleUtility.delay(500);
             if (currentRoom.leaveRoom()) {
                 System.out.println(currentRoom.getPrintMessage());
+                player.addPlayerGold(roomNumber * 10);
+                System.out.println(Colors.YELLOW + "You gain some gold as you cleared the room!" + Colors.YELLOW);
                 enterRoom();
             }
         } else if (choices.equals("s")) {
+            ConsoleUtility.delay(500);
             currentRoom.searchRoom();
         } else if (choices.equals("f")) {
+            ConsoleUtility.delay(500);
             currentRoom.fightDragon();
         } else if (choices.equals("i")) {
             currentRoom.inspectDragon();
         } else if (choices.equals("u")) {
+            ConsoleUtility.delay(500);
             currentRoom.useHealthPot();
         } else if (choices.equals("l")) {
             currentRoom.inspectSword();
         } else if (choices.equals("b")) {
             System.out.println("Do you want to upgrade your sword? The first upgrade of your sword is free! Each upgrade cost more even if you didn't buy an upgrade.(Y/N): ");
             String choice = scan.nextLine().toLowerCase();
+            ConsoleUtility.delay(1000);
             while (!choice.equals("y") && !choice.equals("n")) {
                 System.out.print("That is a invalid option, please choose again:");
                 choice = scan.nextLine().toLowerCase();
@@ -99,6 +112,8 @@ public class DragonSlayer {
                     System.out.println("Please select an valid option");
                     choice = scan.nextLine().toLowerCase();
                 }
+                ConsoleUtility.delay(1000);
+                player.addPlayerGold(-sword.getUpgradeValue() * 10);
                 sword.upgradeStat(choice);
                 System.out.println("Next upgrade cost is " + Colors.YELLOW + sword.getUpgradeValue() * 10 + " golds" + Colors.RESET);
             } else {
@@ -111,7 +126,8 @@ public class DragonSlayer {
         }
     }
     private void endingPhase() {
-        setTop3Score(currentRoom.calucateScore("n"));
+        setTop3Score(currentRoom.calculateScore("n"));
+        ConsoleUtility.delay(1000);
         if (player.isDead()) {
             System.out.println(Colors.CYAN + "Game over, player is dead");
         } else {
@@ -123,7 +139,8 @@ public class DragonSlayer {
     }
     private void endingPhaseMenu() {
         String choice = "";
-        while (!choice.equals("v") && !choice.equals("p")) {
+        while (!choice.equals("l") && !choice.equals("p")) {
+            ConsoleUtility.clearScreen();
             System.out.println("(V)iew your top 3's score");
             System.out.println("(S)ee the point breakdown for this run.");
             System.out.println("(P)lay again");
@@ -137,13 +154,17 @@ public class DragonSlayer {
     private void endingPhaseProcessChoices(String choice) {
         if (choice.equals("v")) {
             for (int i = 0; i < top3Score.length; i++) {
+                ConsoleUtility.delay(1000);
                 System.out.println(i + "." + Colors.PURPLE + top3Score[i] + " points" + Colors.RESET);
             }
         } else if (choice.equals("s")) {
-            currentRoom.calucateScore("y");
+            ConsoleUtility.delay(1000);
+            currentRoom.calculateScore("y");
         } else if (choice.equals("p")) {
             play();
+            ConsoleUtility.delay(1000);
         } else if (choice.equals("l")){
+            ConsoleUtility.delay(1000);
             System.out.println("Goodbye " + Colors.CYAN + player.getPlayerName() + Colors.RESET + ". Hope you have a nice time playing this game. Have a nice day and hope that you play again!");
         } else {
             System.out.println("Yikes that is not an option on the list, please select again!");

@@ -27,15 +27,15 @@ public class Room {
             dragonScore = 0;
         }
         if (roomNumber < 2) {
-            roomName = "Wyverns' den";
+            roomName = Colors.YELLOW + "Wyverns' den" + Colors.RESET;
         } else if (roomNumber < 3) {
-            roomName = "Ladons' den";
+            roomName = Colors.GREEN +  "Ladons' den" + Colors.RESET;
         } else if (roomNumber < 4) {
-            roomName = "Leviathans' den";
+            roomName = Colors.BLUE +  "Leviathans' den" + Colors.RESET;
         } else if (roomNumber < 5) {
-            roomName = "Hydras' den";
+            roomName = Colors.PURPLE + "Hydras' den" + Colors.RESET;
         } else {
-            roomName = "Typhons' den";
+            roomName = Colors.BLACK + "Typhons' den" + Colors.RESET;
         }
     }
 
@@ -57,8 +57,14 @@ public class Room {
                 player.setHasHealthPot(true);
                 searchOrNot = true;
             } else if (value <= 4) {
-                printMessage = Colors.YELLOW + "You found some gold!" + Colors.RESET;
-                player.addPlayerGold((int) (Math.random() * 15) + 1);
+                value = (int) (Math.random() * 3) + 1;
+                if (value < 3) {
+                    printMessage = Colors.YELLOW + "You found some gold!" + Colors.RESET;
+                    player.addPlayerGold((int) (Math.random() * 30) + 1);
+                } else {
+                    printMessage = Colors.YELLOW + "Jackpot! You found a secret sash of the dragon's treausre!";
+                    player.addPlayerGold((int) (Math.random() * 40) + 20);
+                }
                 searchOrNot = true;
             } else if (value <= 9) {
                 printMessage = "You found nothing!";
@@ -66,7 +72,7 @@ public class Room {
             } else {
                 damageTaken = (int) (Math.random() * 10) + 1;
                 player.changePlayerHealth(damageTaken);
-                printMessage = "You found a trap and injured yourself! You lost " + Colors.RED + damageTaken + "health!" + Colors.RESET;
+                printMessage = "You found a trap and injured yourself! You lost " + Colors.RED + damageTaken + " health!" + Colors.RESET;
                 searchOrNot = true;
             }
         } else {
@@ -158,24 +164,24 @@ public class Room {
 
     public boolean leaveRoom() {
         if (roomCleared) {
-            printMessage = "You entered to the next room of the dungeon";
+            printMessage = Colors.CYAN + "You entered to the next room of the dungeon" + Colors.RESET;
             return true;
         }
-        printMessage = "Sorry you can't leave the den yet, there are still dragon guarding it.";
+        printMessage = Colors.CYAN + "Sorry you can't leave the den yet, there are still dragon guarding it." + Colors.RESET;
         return false;
     }
 
-    public int calucateScore(String breakdown) {
+    public int calculateScore(String breakdown) {
         if (breakdown.equals("y")) {
+            System.out.println(Colors.PURPLE + "Here is the breakdown of your points. There might be some hidden achievement that can boost your scores!" + Colors.RESET);
+            ConsoleUtility.delay(1000);
             System.out.println(Colors.GREEN + "You get " + Colors.PURPLE + dragonScore * 3 + Colors.GREEN +" points for the diffcult of each dragon slayed and amount of dragon.");
             System.out.println("You get " + Colors.PURPLE + sword.getUpgradeValue() + Colors.GREEN + " points for upgrading your sword");
-            System.out.print("You get ");
             if (sword.getAttackPower() >= 30 || sword.getDodgeValue() >= 60) {
+                System.out.print("You get ");
                 System.out.print(Colors.PURPLE + (sword.getAttackPower() + sword.getDodgeValue()) * 4);
-            } else {
-                System.out.print(Colors.PURPLE + 0);
+                System.out.println(Colors.GREEN + " points for breaking a certain stat limit on the sword");
             }
-            System.out.println(Colors.GREEN + " points for breaking a certain stat limit on the sword");
             System.out.println("You get " + Colors.PURPLE + player.getPlayerGold() * 2 + Colors.GREEN + " points for the amount of gold you have.");
             System.out.println("You get " + (100 - player.getPlayerMissingHealth()) * 5 + Colors.GREEN + " points for the amount of health you have at the end of the game!");
             if (player.isHasHealthPot()) {
