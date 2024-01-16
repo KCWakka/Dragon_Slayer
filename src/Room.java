@@ -123,15 +123,15 @@ public class Room {
             printMessage += Colors.RED + damageTaken + Colors.RESET;
             if (!dragon.dragonIsDead(damageTaken)) {
                 if ((int) (Math.random() * 100) + 1 >= sword.getDodgeValue()) {
-                    printMessage += "\nThe dragon land its attacked and dealt ";
+                    printMessage += "\nThe dragon land its attack and dealt ";
                     damageTaken = dragon.dragonAttack();
                     printMessage += Colors.RED + damageTaken + Colors.RESET;
                     player.changePlayerHealth(-damageTaken);
                 } else {
-                    printMessage += "\nThe dragon try to attacked but missed.";
+                    printMessage += "\nThe dragon try to attack but missed.";
                 }
             } else {
-                printMessage += Colors.GREEN + "\nYou have killed the dragon before it attacked you. It had drop some loots." + Colors.RESET;
+                printMessage += Colors.GREEN + "\nYou have killed the dragon before it attack you. It had drop some loots." + Colors.RESET;
                 dragonSlayed();
                 int chances = (int) (Math.random() * 4) + 1;
                 if (chances < 2) {
@@ -183,7 +183,7 @@ public class Room {
         if (breakdown.equals("y")) {
             System.out.println(Colors.PURPLE + "Here is the breakdown of your points. There might be some hidden achievement that can boost your scores!" + Colors.RESET);
             ConsoleUtility.delay(1000);
-            System.out.println(Colors.GREEN + "You get " + Colors.PURPLE + dragonScore * 3 + Colors.GREEN +" points for the diffcult of each dragon slayed and amount of dragon.");
+            System.out.println(Colors.GREEN + "You get " + Colors.PURPLE + dragonScore * 3 + Colors.GREEN +" points for the difficult of each dragon slayed and amount of dragon.");
             System.out.println("You get " + Colors.PURPLE + sword.getUpgradeValue() + Colors.GREEN + " points for upgrading your sword");
             if (sword.getAttackPower() >= 30 || sword.getDodgeValue() >= 60) {
                 System.out.print("You get ");
