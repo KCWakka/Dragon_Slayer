@@ -9,6 +9,9 @@ public class DragonSlayer {
     private int victory;
     private int victoryCount;
 
+    /** Inital the variable
+     *
+     */
     public DragonSlayer() {
         player = null;
         sword = null;
@@ -16,12 +19,19 @@ public class DragonSlayer {
         victory = 0;
         victoryCount = 0;
     }
+
+    /** Use to start the game
+     *
+     */
     public void play() {
         startingGame();
         enterRoom();
         gameMenu();
     }
 
+    /** The Starting phase of the game
+     * Introduce the player to the game and get information from them
+     */
     private void startingGame() {
         System.out.println( Colors.CYAN +"Welcome to the Dragon Slayer game where the goal is to defeat the dungeon by defeat the dragon in each room the dugneon has." + Colors.RESET);
         System.out.println("Some dragon are tougher other so you can achieve your goals by scavenging for resources and upgrading your sword!");
@@ -32,6 +42,10 @@ public class DragonSlayer {
         roomNumber = 0;
         ConsoleUtility.delay(1000);
     }
+
+    /** Start the game and use to enter a new room every time
+     * Give information to the Room Class
+     */
     private void enterRoom() {
         boolean newGame = false;
         roomNumber++;
@@ -43,6 +57,10 @@ public class DragonSlayer {
         ConsoleUtility.delay(1000);
         currentRoom.playerHasArrived(player, sword);
     }
+
+    /** Main part of the game
+     * Give a list of options a player can be made and depend on what happen the game end
+     */
     private void gameMenu() {
         String choice = "";
         while (!choice.equals("g")) {
@@ -79,6 +97,10 @@ public class DragonSlayer {
         }
     }
 
+     /** Base on the option player chose, certain things will happen
+     *
+     * @param choices the option the player chose
+     */
     private void processChoices(String choices) {
         if (choices.equals("e")) {
             ConsoleUtility.delay(500);
@@ -129,6 +151,10 @@ public class DragonSlayer {
             System.out.println("Yikes that is not an option on the list, please select again!");
         }
     }
+
+    /** Use to tell the player the game end base on what happen
+     * Led them to the game over menu
+     */
     private void endingPhase() {
         setTop3Score(currentRoom.calculateScore("n"));
         ConsoleUtility.delay(1000);
@@ -141,6 +167,10 @@ public class DragonSlayer {
         }
         endingPhaseMenu();
     }
+
+    /** Show the choices a player can be made at the end of game
+     * Can play again and see their score
+     */
     private void endingPhaseMenu() {
         String choice = "";
         while (!choice.equals("l") && !choice.equals("p")) {
@@ -155,6 +185,10 @@ public class DragonSlayer {
         }
     }
 
+    /** Process the choices the player made at the game over screen
+     * Display score, show top 3 score, leave game or start over.
+     * @param choice the option the player chose
+     */
     private void endingPhaseProcessChoices(String choice) {
         if (choice.equals("v")) {
             for (int i = 0; i < top3Score.length; i++) {
