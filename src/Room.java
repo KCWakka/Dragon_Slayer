@@ -12,6 +12,13 @@ public class Room {
     private int victory;
     private int score;
     private static int dragonScore = 0;
+
+    /** initialize all the variable in the program
+     *
+     * @param roomNumber a way to see how many dragon can appear
+     * @param victory a way to make a game harder base on how many times a player have won
+     * @param newGame use to set dragonScore to 0, so it doesn't get carry to other run
+     */
     public Room(int roomNumber, int victory, boolean newGame) {
         searchOrNot = false;
         this.roomNumber = roomNumber;
@@ -39,7 +46,9 @@ public class Room {
         }
     }
     public String getPrintMessage() {
-        return Colors.WHITE + printMessage + Colors.RESET;
+        String str = printMessage;
+        printMessage = "";
+        return Colors.WHITE + str + Colors.RESET;
     }
     public void dragonSlayed() {
         dragonAmount--;
@@ -73,7 +82,7 @@ public class Room {
                 searchOrNot = true;
             } else {
                 damageTaken = (int) (Math.random() * 10) + 1;
-                player.changePlayerHealth(damageTaken);
+                player.changePlayerHealth(-damageTaken);
                 printMessage = "You found a trap and injured yourself! You lost " + Colors.RED + damageTaken + " health!" + Colors.RESET;
                 searchOrNot = true;
             }

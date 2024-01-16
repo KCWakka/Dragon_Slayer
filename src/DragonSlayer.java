@@ -20,7 +20,6 @@ public class DragonSlayer {
         startingGame();
         enterRoom();
         gameMenu();
-        endingPhase();
     }
 
     private void startingGame() {
@@ -52,7 +51,9 @@ public class DragonSlayer {
                 ConsoleUtility.clearScreen();
                 choice = "g";
             } else {
-                ConsoleUtility.clearScreen();
+                if (!choice.equals("b")) {
+                    ConsoleUtility.clearScreen();
+                }
                 System.out.println();
                 System.out.println(currentRoom.getPrintMessage());
                 System.out.println("***");
@@ -72,6 +73,9 @@ public class DragonSlayer {
                 ConsoleUtility.delay(500);
                 processChoices(choice);
             }
+        }
+        if (player.isDead() || roomNumber == 6) {
+            endingPhase();
         }
     }
 
