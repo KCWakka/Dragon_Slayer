@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8948eecb-9a1f-435d-b492-781a844d812e" name="Changes" comment="fixed some typo">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DragonSlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/DragonSlayer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Room.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/Room.class" afterDir="false" />
+    <list default="true" id="8948eecb-9a1f-435d-b492-781a844d812e" name="Changes" comment="updated class">
+      <change beforePath="$PROJECT_DIR$/src/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Room.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +117,14 @@
       <option name="project" value="LOCAL" />
       <updated>1705428299020</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="updated class">
+      <created>1705428832760</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1705428832760</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -145,6 +150,7 @@
     <MESSAGE value="added some Quality of life stuffs" />
     <MESSAGE value="fixed some errors in the game." />
     <MESSAGE value="fixed some typo" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed some typo" />
+    <MESSAGE value="updated class" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated class" />
   </component>
 </project>

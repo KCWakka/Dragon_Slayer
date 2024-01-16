@@ -45,21 +45,35 @@ public class Room {
             roomName = Colors.BLACK + "Typhons' den" + Colors.RESET;
         }
     }
+
+    /** Use to information of what happen in this class
+     *
+     * @return Colors.WHITE + str + Colors.RESET;
+     */
     public String getPrintMessage() {
         String str = printMessage;
         printMessage = "";
         return Colors.WHITE + str + Colors.RESET;
     }
+
+    /** Use to count the amount of dragon remain after one is ded
+     * Also use to see if the room is cleared, add score for the scoring section and make a new dragon if dragon is still alive.
+     */
     public void dragonSlayed() {
         dragonAmount--;
         if (dragonAmount == 0) {
             roomCleared = true;
+            dragonScore += dragon.getDragonLevel();
         } else {
             dragonScore += dragon.getDragonLevel();
             dragon = new Dragon(victory);
         }
     }
 
+    /** A choice a player can be made and a random event occur base on rng
+     * Can find a potion for health, golds, heart yourself or damage yourself
+     *
+     */
     public void searchRoom() {
         if (!searchOrNot) {
             int value = (int) (Math.random() * 10) + 1;
@@ -90,6 +104,12 @@ public class Room {
             printMessage = "You already have searched this room";
         }
     }
+
+    /** To tell the room class the player have entered a room
+     * the player and the sword are the same in the DragonSlayer class, so it can be updated
+     * @param player the player
+     * @param sword the sword
+     */
     public void playerHasArrived(Player player, Sword sword) {
         this.player = player;
         this.sword = sword;
@@ -101,6 +121,10 @@ public class Room {
         }
     }
 
+    /** A method for the player to use a health pot
+     * Player regain half of their missing health and lose the pot
+     * If player doesn't have the pot, they can't use it
+     */
     public void useHealthPot() {
         if (player.isHasHealthPot()) {
             printMessage = "You use a health pot and regain ";
@@ -113,9 +137,16 @@ public class Room {
         }
     }
 
+    /** Get information about dragon such as health and level
+     *
+     */
     public void inspectDragon() {
         printMessage = dragon.toString();
     }
+
+    /** Use to deal damage to dragon and let the dragon attack you back
+     * After the dragon is dead, they get loot randomly
+     */
     public void fightDragon() {
         if (!roomCleared) {
             printMessage = Colors.CYAN + player.getPlayerName() + Colors.RESET + " attacked for ";
@@ -160,16 +191,28 @@ public class Room {
             printMessage = Colors.CYAN + "You killed all the dragon in the room, there is no more to killed!" + Colors.RESET;
         }
     }
+
+    /** Explain how many dragon are in this room and the room's name
+     *
+     * @return str
+     */
     public String toString() {
         String str = "This dungeon have 5 room and is filled with many dragons! You are in " + Colors.CYAN + roomName + Colors.RESET;
         str += " The total amount of dragon here is: " + Colors.PURPLE + dragonAmount + Colors.RESET;
         return str;
     }
 
+    /** Give information about the sword such as attackPower and dodgeValue(chance to not take damage)
+     *
+     */
     public void inspectSword() {
         printMessage = sword.toString();
     }
 
+    /** Check if the player can leave the room and give response base on if they can.
+     *
+     * @return true/false
+     */
     public boolean leaveRoom() {
         if (roomCleared) {
             printMessage = Colors.CYAN + "You entered to the next room of the dungeon" + Colors.RESET;
@@ -179,6 +222,11 @@ public class Room {
         return false;
     }
 
+    /** Calculate their final score base on achievement they made and explain each part of the points if they want
+     *
+     * @param breakdown Check to see if player want to see how their score are calculate.
+     * @return score
+     */
     public int calculateScore(String breakdown) {
         if (breakdown.equals("y")) {
             System.out.println(Colors.PURPLE + "Here is the breakdown of your points. There might be some hidden achievement that can boost your scores!" + Colors.RESET);
@@ -211,6 +259,11 @@ public class Room {
         }
         return score;
     }
+
+    /** Set the victory of DragonSlayer to Room so more difficult dragon can appear
+     *
+     * @param victory amount of victory
+     */
     public void setVictory(int victory) {
         this.victory = victory;
     }
